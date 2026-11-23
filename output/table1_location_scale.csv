@@ -1,0 +1,7 @@
+shape,G_inv_0.9
+Standard normal Phi (quasilinear / Gaussian common value),1.281552
+Standard logistic,2.197225
+Student t with 3 degrees of freedom,1.637744
+Standard Cauchy,3.077684
+"Uniform on [-1, 1]",0.800000
+Large market: limiting normal (CLT),1.281552

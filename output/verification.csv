@@ -1,0 +1,60 @@
+location,quantity,manuscript,reproduced,match
+"Sec. 3.2, text before Table 1",probit-to-logit shift log(2.20/1.28) (nats),0.54,0.54,yes
+"Table 1, row 1","G^{-1}(0.9), standard normal",1.28,1.28,yes
+"Table 1, row 3","G^{-1}(0.9), standard logistic",2.20,2.20,yes
+"Table 1, row 4","G^{-1}(0.9), Student t3",1.64,1.64,yes
+"Table 1, row 5","G^{-1}(0.9), Cauchy",3.08,3.08,yes
+"Table 1, row 6","G^{-1}(0.9), uniform on [-1,1]",0.80,0.80,yes
+"Table 1, row 7","G^{-1}(0.9), large market (limiting normal)",1.28,1.28,yes
+"Sec. 5.2, grid table (unnumbered)",N=2: tick size eps,0.500,0.500,yes
+"Sec. 5.2, grid table (unnumbered)",N=2: K*_hom,1.332,1.332,yes
+"Sec. 5.2, grid table (unnumbered)",N=2: correct-choice probability,0.979,0.979,yes
+"Sec. 5.2, grid table (unnumbered)",N=2: Delta_excl,0.0417,0.0417,yes
+"Sec. 5.2, grid table (unnumbered)",N=2: T,0.0013,0.0013,yes
+"Sec. 5.2, grid table (unnumbered)",N=2: Delta_excl + T,0.0429,0.0429,yes
+"Sec. 5.2, grid table (unnumbered)",N=3: tick size eps,0.333,0.333,yes
+"Sec. 5.2, grid table (unnumbered)",N=3: K*_hom,2.871,2.871,yes
+"Sec. 5.2, grid table (unnumbered)",N=3: correct-choice probability,0.804,0.804,yes
+"Sec. 5.2, grid table (unnumbered)",N=3: Delta_excl,0.0185,0.0185,yes
+"Sec. 5.2, grid table (unnumbered)",N=3: T,0.0118,0.0118,yes
+"Sec. 5.2, grid table (unnumbered)",N=3: Delta_excl + T,0.0303,0.0303,yes
+"Sec. 5.2, grid table (unnumbered)",N=4: tick size eps,0.250,0.250,yes
+"Sec. 5.2, grid table (unnumbered)",N=4: K*_hom,4.784,4.784,yes
+"Sec. 5.2, grid table (unnumbered)",N=4: correct-choice probability,0.685,0.685,yes
+"Sec. 5.2, grid table (unnumbered)",N=4: Delta_excl,0.0104,0.0104,yes
+"Sec. 5.2, grid table (unnumbered)",N=4: T,0.0189,0.0189,yes
+"Sec. 5.2, grid table (unnumbered)",N=4: Delta_excl + T,0.0293,0.0293,yes
+"Sec. 5.2, grid table (unnumbered)",N=5: tick size eps,0.200,0.200,yes
+"Sec. 5.2, grid table (unnumbered)",N=5: K*_hom,6.973,6.973,yes
+"Sec. 5.2, grid table (unnumbered)",N=5: correct-choice probability,0.622,0.622,yes
+"Sec. 5.2, grid table (unnumbered)",N=5: Delta_excl,0.0067,0.0067,yes
+"Sec. 5.2, grid table (unnumbered)",N=5: T,0.0227,0.0227,yes
+"Sec. 5.2, grid table (unnumbered)",N=5: Delta_excl + T,0.0293,0.0293,yes
+"Sec. 5.2, grid table (unnumbered)",N=6: tick size eps,0.167,0.167,yes
+"Sec. 5.2, grid table (unnumbered)",N=6: K*_hom,9.377,9.377,yes
+"Sec. 5.2, grid table (unnumbered)",N=6: correct-choice probability,0.587,0.587,yes
+"Sec. 5.2, grid table (unnumbered)",N=6: Delta_excl,0.0046,0.0046,yes
+"Sec. 5.2, grid table (unnumbered)",N=6: T,0.0248,0.0248,yes
+"Sec. 5.2, grid table (unnumbered)",N=6: Delta_excl + T,0.0294,0.0294,yes
+"Sec. 5.2, text after table",unconstrained minimiser of Delta_excl+T over N=2..6,4,4,yes
+"Sec. 5.2, text after table",N=2 feasible at Kbar=2 (K_hom <= 2),yes,yes,yes
+"Sec. 5.2, text after table",N=3 feasible at Kbar=2,no,no,yes
+"Sec. 5.2, text after table",finest feasible grid N,2,2,yes
+"Sec. 5.2, text after table",constrained solution eps**,1/2,0.500000 (= 1/2),yes
+Sec. 7.2 text; Table 2 row 1,p_S,1/4,0.250000 (= 1/4),yes
+Sec. 7.2 text; Table 2 row 1,g_S,0.20,0.20,yes
+Sec. 7.2 text; Table 2 row 1,Delta_S,0.05,0.05,yes
+Sec. 7.2 text; Table 2 row 1,K_S^rep,5.47,5.47,yes
+Sec. 7.2 text; Table 2 row 2,p_L,3/4,0.750000 (= 3/4),yes
+Sec. 7.2 text; Table 2 row 2,g_L,0.20,0.20,yes
+Sec. 7.2 text; Table 2 row 2,Delta_L,0.15,0.15,yes
+Sec. 7.2 text; Table 2 row 2,K_L^rep,3.32,3.32,yes
+Sec. 7.2 text,K_S^rep - K_L^rep,2.15,2.15,yes
+"Sec. 7.2, DA/RSD example",Delta_DA,0.4,0.4,yes
+"Sec. 7.2, DA/RSD example",Delta_RSD,0.2,0.2,yes
+"Sec. 7.2, DA/RSD example",K*_DA,1.64,1.64,yes
+"Sec. 7.2, DA/RSD example",K*_RSD,2.79,2.79,yes
+"Sec. 7.2, DA/RSD example",K*_RSD - K*_DA,1.15,1.15,yes
+"App. B.1, numerical example",tau*(1),1.094,1.094,yes
+"App. B.1, numerical example",tau*(2),1.035,1.035,yes
+"App. B.1, numerical example",tau*(3),1.013,1.013,yes

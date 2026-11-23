@@ -1,0 +1,195 @@
+Replication package: Action Spaces Matter: Choice, Equilibrium, and
+Mechanism Design under Cognitive Constraints
+Python 3.14.4 on Windows 11
+numpy 2.4.4, scipy 1.17.1
+Started 2026-10-31 13:54:16
+
+==============================================================================
+Table 1 (Section 3.2): G^{-1}(0.9) for location-scale shapes, delta = 0.1
+==============================================================================
+Standard normal Phi (quasilinear / Gaussian common value)    1.2816
+Standard logistic                                            2.1972
+Student t with 3 degrees of freedom                          1.6377
+Standard Cauchy                                              3.0777
+Uniform on [-1, 1]                                           0.8000
+Large market: limiting normal (CLT)                          1.2816
+Probit-to-logit threshold shift log(G_logit^-1(0.9)/Phi^-1(0.9)) = 0.5391 nats
+written: output/table1_location_scale.csv
+[scripts/table1_location_scale.py finished in 1.0 s]
+
+==============================================================================
+Section 5.2: grid auction (delta=0.1, omega=0.3, Kbar=2, vbar=0.06)
+==============================================================================
+ N    eps   K_hom  accuracy   D_excl       T  D_excl+T  (N-1)T  D_excl+(N-1)T
+ 2  0.500   1.332     0.979   0.0417  0.0013  0.042942  0.0013       0.042942
+ 3  0.333   2.871     0.804   0.0185  0.0118  0.030292  0.0235       0.042065
+ 4  0.250   4.784     0.685   0.0104  0.0189  0.029339  0.0568       0.067182
+ 5  0.200   6.973     0.622   0.0067  0.0227  0.029341  0.0907       0.097364
+ 6  0.167   9.377     0.587   0.0046  0.0248  0.029434  0.1240       0.128651
+------------------------------------------------------------------------------
+unconstrained optimum, local loss T        : N = 4
+unconstrained optimum, additive (N-1)T     : N = 3
+feasible grids with K_hom <= Kbar = 2      : N in [2]
+finest feasible grid N = 2, eps_K* = 1/2; constrained solution eps** = 0.500
+
+Exact check of Delta_excl(N) = 1/(6 N^2):
+  N=2: integral 0.04166667  formula 0.04166667
+  N=3: integral 0.01851852  formula 0.01851852
+  N=4: integral 0.01041667  formula 0.01041667
+  N=5: integral 0.00666667  formula 0.00666667
+  N=6: integral 0.00462963  formula 0.00462963
+
+Sensitivity: CDN with heterogeneous benefit coefficients (Lemma A.1)
+ N   ratio=0.5     ratio=1     ratio=2    K_hom
+ 2       1.380       1.332       1.380    1.332
+ 3       3.167       2.871       2.728    2.871
+ 4       5.297       4.784       4.486    4.784
+ 5       7.691       6.973       6.531    6.973
+ 6      10.296       9.377       8.795    9.377
+written: output/table_grid_auction.csv
+written: output/table_grid_auction_heterogeneity.csv
+[scripts/grid_auction.py finished in 11.9 s]
+
+==============================================================================
+Section 7.2 / Table 2: small-school bias (exact enumeration of 4! orders)
+==============================================================================
+Small S vs. Large L      p = 1/4  g = 0.20  Delta = 0.05  K_rep = 5.4723
+Large L vs. Outside O    p = 3/4  g = 0.20  Delta = 0.15  K_rep = 3.3239
+K_rep(S) - K_rep(L) = 2.1484
+written: output/table2_small_school.csv
+[scripts/small_school.py finished in 0.0 s]
+
+==============================================================================
+Section 7.2: DA vs. RSD two-action example (beta=0.6, omega=0.3, delta=0.1)
+==============================================================================
+Delta_DA = 0.40  K*_DA  = 1.6373
+Delta_RSD = 0.20 K*_RSD = 2.7890
+K*_RSD - K*_DA = 1.1517
+written: output/da_rsd_example.csv
+[scripts/da_rsd.py finished in 0.0 s]
+
+==============================================================================
+Appendix B.1: Pigouvian tax tau*(kappa), eta=1, omega_eta=0.2, delta=0.1
+==============================================================================
+kappa = 1: tau* = 1.0943
+kappa = 2: tau* = 1.0347
+kappa = 3: tau* = 1.0128
+written: output/appendixB_pigouvian_tax.csv
+[scripts/pigouvian_tax.py finished in 0.0 s]
+
+==============================================================================
+Eq. (8): posterior draw conditional on the true payoff
+==============================================================================
+k=0.2: mean 0.08249 vs 0.08242; var 0.080197 vs 0.080218  PASS
+k=1.0: mean 0.21612 vs 0.21617; var 0.022693 vs 0.022712  PASS
+k=2.5: mean 0.24834 vs 0.24832; var 0.001210 vs 0.001209  PASS
+==============================================================================
+Eq. (13): A4 benefit B(m) = B(0) + sum_a c_a m_a
+==============================================================================
+m=[0. 0. 0.]: simulated 0.0947, B(0)+c.m = 0.0946  PASS
+m=[0.3 0.7 0.5]: simulated 0.2274, B(0)+c.m = 0.2276  PASS
+m=[0.9 0.2 0.6]: simulated 0.2251, B(0)+c.m = 0.2252  PASS
+==============================================================================
+Theorem 3.1: pairwise accuracy equals 1 - delta at K*
+==============================================================================
+n=2 Delta=0.05: K*=5.4723, accuracy 0.9000000000  PASS
+n=2 Delta=0.4: K*=1.6373, accuracy 0.9000000000  PASS
+n=5 Delta=0.2: K*=6.9726, accuracy 0.9000000000  PASS
+n=8 Delta=0.125: K*=14.6883, accuracy 0.9000000000  PASS
+Monte Carlo pairwise accuracy at K* (n=3, Delta=0.2): 0.8999  PASS
+==============================================================================
+Lemma A.1 and eq. (14): heterogeneous CDN and Linear--Shannon allocation
+==============================================================================
+common c, n=2: Lemma A.1 5.472274 vs Theorem 3.1 5.472274  PASS
+common c, n=4: Lemma A.1 4.784142 vs Theorem 3.1 4.784142  PASS
+common c, n=6: Lemma A.1 9.376852 vs Theorem 3.1 9.376852  PASS
+K=0.1: k=[0.1 0.  0.  0. ], sum=0.1000, KKT  PASS
+K=0.5: k=[0.4233 0.0767 0.     0.    ], sum=0.5000, KKT  PASS
+K=2.0: k=[1.0132 0.6667 0.3201 0.    ], sum=2.0000, KKT  PASS
+Prop. 3.4(iii), eq. (28): k_a - k_b = 0.5 log(c_a/c_b)  PASS
+==============================================================================
+Proposition 3.4: identification
+==============================================================================
+(i) n=2 K=1.0: sigma=0.649719, inverted K=1.00000000  PASS
+(i) n=4 K=3.0: sigma=0.719587, inverted K=3.00000000  PASS
+(i) n=6 K=7.5: sigma=0.862267, inverted K=7.50000000  PASS
+(ii) n=2: dRHS/dK numeric 0.539631 vs 2/[n m (1+m)] 0.539631  PASS
+(ii) n=5: dRHS/dK numeric 0.336946 vs 2/[n m (1+m)] 0.336946  PASS
+(ii) Jacobian rank with n in {2, 5}: 2  PASS
+==============================================================================
+Section 5.2: Monte Carlo check of Delta_excl(N) = 1/(6 N^2)
+==============================================================================
+N=2: simulated 0.04167 vs 0.04167  PASS
+N=3: simulated 0.01850 vs 0.01852  PASS
+N=4: simulated 0.01042 vs 0.01042  PASS
+N=5: simulated 0.00666 vs 0.00667  PASS
+N=6: simulated 0.00463 vs 0.00463  PASS
+[scripts/model_checks.py finished in 4.6 s]
+
+==============================================================================
+Comparison with the numbers printed in the manuscript
+==============================================================================
+ok  Sec. 3.2, text before Table 1      probit-to-logit shift log(2.20/1.28) (nats)        0.54       0.54
+ok  Table 1, row 1                     G^{-1}(0.9), standard normal                       1.28       1.28
+ok  Table 1, row 3                     G^{-1}(0.9), standard logistic                     2.20       2.20
+ok  Table 1, row 4                     G^{-1}(0.9), Student t3                            1.64       1.64
+ok  Table 1, row 5                     G^{-1}(0.9), Cauchy                                3.08       3.08
+ok  Table 1, row 6                     G^{-1}(0.9), uniform on [-1,1]                     0.80       0.80
+ok  Table 1, row 7                     G^{-1}(0.9), large market (limiting normal)        1.28       1.28
+ok  Sec. 5.2, grid table (unnumbered)  N=2: tick size eps                                0.500      0.500
+ok  Sec. 5.2, grid table (unnumbered)  N=2: K*_hom                                       1.332      1.332
+ok  Sec. 5.2, grid table (unnumbered)  N=2: correct-choice probability                   0.979      0.979
+ok  Sec. 5.2, grid table (unnumbered)  N=2: Delta_excl                                  0.0417     0.0417
+ok  Sec. 5.2, grid table (unnumbered)  N=2: T                                           0.0013     0.0013
+ok  Sec. 5.2, grid table (unnumbered)  N=2: Delta_excl + T                              0.0429     0.0429
+ok  Sec. 5.2, grid table (unnumbered)  N=3: tick size eps                                0.333      0.333
+ok  Sec. 5.2, grid table (unnumbered)  N=3: K*_hom                                       2.871      2.871
+ok  Sec. 5.2, grid table (unnumbered)  N=3: correct-choice probability                   0.804      0.804
+ok  Sec. 5.2, grid table (unnumbered)  N=3: Delta_excl                                  0.0185     0.0185
+ok  Sec. 5.2, grid table (unnumbered)  N=3: T                                           0.0118     0.0118
+ok  Sec. 5.2, grid table (unnumbered)  N=3: Delta_excl + T                              0.0303     0.0303
+ok  Sec. 5.2, grid table (unnumbered)  N=4: tick size eps                                0.250      0.250
+ok  Sec. 5.2, grid table (unnumbered)  N=4: K*_hom                                       4.784      4.784
+ok  Sec. 5.2, grid table (unnumbered)  N=4: correct-choice probability                   0.685      0.685
+ok  Sec. 5.2, grid table (unnumbered)  N=4: Delta_excl                                  0.0104     0.0104
+ok  Sec. 5.2, grid table (unnumbered)  N=4: T                                           0.0189     0.0189
+ok  Sec. 5.2, grid table (unnumbered)  N=4: Delta_excl + T                              0.0293     0.0293
+ok  Sec. 5.2, grid table (unnumbered)  N=5: tick size eps                                0.200      0.200
+ok  Sec. 5.2, grid table (unnumbered)  N=5: K*_hom                                       6.973      6.973
+ok  Sec. 5.2, grid table (unnumbered)  N=5: correct-choice probability                   0.622      0.622
+ok  Sec. 5.2, grid table (unnumbered)  N=5: Delta_excl                                  0.0067     0.0067
+ok  Sec. 5.2, grid table (unnumbered)  N=5: T                                           0.0227     0.0227
+ok  Sec. 5.2, grid table (unnumbered)  N=5: Delta_excl + T                              0.0293     0.0293
+ok  Sec. 5.2, grid table (unnumbered)  N=6: tick size eps                                0.167      0.167
+ok  Sec. 5.2, grid table (unnumbered)  N=6: K*_hom                                       9.377      9.377
+ok  Sec. 5.2, grid table (unnumbered)  N=6: correct-choice probability                   0.587      0.587
+ok  Sec. 5.2, grid table (unnumbered)  N=6: Delta_excl                                  0.0046     0.0046
+ok  Sec. 5.2, grid table (unnumbered)  N=6: T                                           0.0248     0.0248
+ok  Sec. 5.2, grid table (unnumbered)  N=6: Delta_excl + T                              0.0294     0.0294
+ok  Sec. 5.2, text after table         unconstrained minimiser of Delta_excl+T over N=2..6        4          4
+ok  Sec. 5.2, text after table         N=2 feasible at Kbar=2 (K_hom <= 2)                 yes        yes
+ok  Sec. 5.2, text after table         N=3 feasible at Kbar=2                               no         no
+ok  Sec. 5.2, text after table         finest feasible grid N                                2          2
+ok  Sec. 5.2, text after table         constrained solution eps**                          1/2 0.500000 (= 1/2)
+ok  Sec. 7.2 text; Table 2 row 1       p_S                                                 1/4 0.250000 (= 1/4)
+ok  Sec. 7.2 text; Table 2 row 1       g_S                                                0.20       0.20
+ok  Sec. 7.2 text; Table 2 row 1       Delta_S                                            0.05       0.05
+ok  Sec. 7.2 text; Table 2 row 1       K_S^rep                                            5.47       5.47
+ok  Sec. 7.2 text; Table 2 row 2       p_L                                                 3/4 0.750000 (= 3/4)
+ok  Sec. 7.2 text; Table 2 row 2       g_L                                                0.20       0.20
+ok  Sec. 7.2 text; Table 2 row 2       Delta_L                                            0.15       0.15
+ok  Sec. 7.2 text; Table 2 row 2       K_L^rep                                            3.32       3.32
+ok  Sec. 7.2 text                      K_S^rep - K_L^rep                                  2.15       2.15
+ok  Sec. 7.2, DA/RSD example           Delta_DA                                            0.4        0.4
+ok  Sec. 7.2, DA/RSD example           Delta_RSD                                           0.2        0.2
+ok  Sec. 7.2, DA/RSD example           K*_DA                                              1.64       1.64
+ok  Sec. 7.2, DA/RSD example           K*_RSD                                             2.79       2.79
+ok  Sec. 7.2, DA/RSD example           K*_RSD - K*_DA                                     1.15       1.15
+ok  App. B.1, numerical example        tau*(1)                                           1.094      1.094
+ok  App. B.1, numerical example        tau*(2)                                           1.035      1.035
+ok  App. B.1, numerical example        tau*(3)                                           1.013      1.013
+written: output/verification.csv
+
+Manuscript numbers: 59 of 59 reproduced
+Supplementary checks: 39 of 39 passed
+Total running time: 17.7 s
